@@ -44,7 +44,7 @@ if((string)@$_REQUEST['password']!=''){
 <div id="target"></div>
 <script id="template" type="text/ractive">
 {{#each items}} 
-<li>{{this.username}}:{{this.message}}</li>
+<div>{{this.username}}: {{this.message}}</div>
 {{/each}}
 </script>
 <script>
