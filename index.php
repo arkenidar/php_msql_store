@@ -32,7 +32,11 @@ function post(form,action=''){
 }
 </script>
 
-<?php if(@$_SESSION['username']==''){ ?>
+<div id="target"></div>
+
+<script id="template" type="text/ractive">
+
+{{#if username==''}}
 
 <form method="post">
 <input type="text" placeholder="username" name="username">
@@ -40,29 +44,32 @@ function post(form,action=''){
 <input type="submit" value="login">
 </form>
 
-<?php }else{ ?>
+{{else}}
 
 <form onsubmit="post(this); return false">
 <input type="text" placeholder="message" name="message" autocomplete="off">
 <input type="submit" value="send">
 </form>
 
-<div id="target"></div>
-<script id="template" type="text/ractive">
 {{#each items}} 
 <div>{{this.username}}: {{this.message}}</div>
 {{/each}}
+
+{{/if}}
+
 </script>
+
 <script>
+
 ractive = new Ractive({
   target: '#target',
   template: '#template',
   data:{
       items: [],
+      username: <?=json_encode((string)@$_SESSION['username'])?>,
   },
 })
 
 setInterval(function(){jQuery.getJSON('store.json',function(data){ractive.set('items',data)})},1000)
-</script>
 
-<?php } ?>
+</script>
