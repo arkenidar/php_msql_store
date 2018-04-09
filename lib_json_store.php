@@ -12,5 +12,6 @@ function write_json($filename, $content){
 function prepend_item($filename, $item){
     $items=read_json($filename);
     array_unshift($items,$item);
+    //$items[]=$item;
     write_json($filename,$items);
 }

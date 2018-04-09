@@ -1,0 +1,55 @@
+<!doctype html>
+<title>mini chat</title>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+function post(form,action=''){
+    $.post(action,$(form).serialize())
+    $(form).trigger('reset')
+}
+</script>
+
+<div id="vue">
+
+<form onsubmit="post(this, '_.php'); getUsername(); return false" v-if="username==''">
+<input type="text" placeholder="username" name="username">
+<input type="password" placeholder="password" name="password">
+<input type="submit" value="login">
+</form>
+
+<div v-if="username!=''">
+
+<form onsubmit="post(this, '_.php'); return false">
+<input type="text" v-bind:placeholder="usernamePlaceholder" name="message" autocomplete="off">
+<input type="submit" value="send">
+</form>
+
+<div v-for="item in items">
+<div>{{item.username}}: {{item.message}}</div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+var vue = new Vue({
+el: '#vue',
+data: {
+    items: [],
+    username: '',
+    },
+computed: {
+    usernamePlaceholder: function(){ return "message from "+this.username }
+    },
+})
+
+setInterval(function(){jQuery.getJSON('store.json',function(data){ vue.$data.items=data })}, 5000)
+
+function getUsername(){
+    jQuery.getJSON('_.php?username=query',function(data){ vue.$data.username=data })
+}
+
+</script>
