@@ -25,6 +25,12 @@ if((string)@$_REQUEST['password']!=''){
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/ractive"></script>
+<script>
+function post(form,action=''){
+    $.post(action,$(form).serialize())
+    $(form).trigger('reset')
+}
+</script>
 
 <?php if(@$_SESSION['username']==''){ ?>
 
@@ -36,7 +42,7 @@ if((string)@$_REQUEST['password']!=''){
 
 <?php }else{ ?>
 
-<form method="post" onsubmit="$.post('',$(this).serialize());$(this).trigger('reset');return false">
+<form onsubmit="post(this); return false">
 <input type="text" placeholder="message" name="message" autocomplete="off">
 <input type="submit" value="send">
 </form>
