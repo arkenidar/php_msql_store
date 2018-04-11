@@ -21,12 +21,12 @@ function post(form,action=''){
 <div v-if="username!=''">
 
 <form onsubmit="post(this, '_.php'); return false">
-<input type="text" v-bind:placeholder="usernamePlaceholder" name="message" autocomplete="off">
+<input type="text" v-bind:placeholder="usernamePlaceholder" name="message_content" autocomplete="off">
 <input type="submit" value="send">
 </form>
 
 <div v-for="item in items">
-<div>{{item.username}}: {{item.message}}</div>
+<div>{{item.username}}: {{item.message_content}}</div>
 </div>
 
 </div>
@@ -46,7 +46,7 @@ computed: {
     },
 })
 
-setInterval(function(){jQuery.getJSON('store.json',function(data){ vue.$data.items=data })}, 5000)
+setInterval(function(){jQuery.getJSON('_.php?messages=query',function(data){ vue.$data.items=data })}, 5000)
 
 function getUsername(){
     jQuery.getJSON('_.php?username=query',function(data){ vue.$data.username=data })
