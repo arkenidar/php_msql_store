@@ -53,10 +53,10 @@ computed: {
     },
 })
 
-setInterval(function(){jQuery.getJSON('_.php?messages=query',function(data){ vue.$data.items=data })}, 5000)
+setInterval(function(){jQuery.getJSON('_.php?query=messages',function(data){ vue.$data.items=data })}, 5000)
 
 function getUsername(){
-    jQuery.getJSON('_.php?username=query',function(data){ vue.$data.username=data })
+    jQuery.getJSON('_.php?query=username',function(data){ vue.$data.username=data })
 }
 
 </script>
