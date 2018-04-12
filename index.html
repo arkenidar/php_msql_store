@@ -17,6 +17,34 @@ function post(form,action=''){
 }
 </script>
 
+<script>
+function fbAsyncInit(){
+    FB.init({
+        appId:'591217797914842',
+        autoLogAppEvents:true,
+        xfbml:true,
+        version:'v2.12',
+    })
+}
+</script>
+<script id="facebook-jssdk" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+<script>
+function fb_login(){
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            var user_id=response.authResponse.userID
+            console.log('user id',user_id,'logged in')
+            //vue.$data.username=user_id            
+        }
+        else {
+            FB.login()
+        }
+    })
+}
+$(fb_login)
+</script>
+
 <div id="vue">
 
 <form onsubmit="post(this, '_.php'); getUsername(); return false" v-if="username==''">
