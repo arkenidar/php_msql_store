@@ -8,8 +8,8 @@
 </head>
 <body>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="libjquery.js"></script>
+<script src="libvue.js"></script>
 <script>
 function post(form,action=''){
     $.post(action,$(form).serialize())
@@ -27,7 +27,7 @@ function fbAsyncInit(){
     })
 }
 </script>
-<script id="facebook-jssdk" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<!-- <script id="facebook-jssdk" src="https://connect.facebook.net/en_US/sdk.js"></script> -->
 
 <script>
 function fb_login(){
@@ -42,7 +42,7 @@ function fb_login(){
         }
     })
 }
-$(fb_login)
+//$(fb_login)
 </script>
 
 <div id="vue">

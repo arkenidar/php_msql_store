@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5f001577-f44a-4e5c-907d-3bf6e7b68871" name="php_mysql_store" url="http://localhost/php_mysql_store">
+        <fileTransfer port="0" mountedRoot="C:\Users\dario\Dropbox\src\php\php_mysql_store" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -13,6 +13,7 @@ if(isset($_REQUEST['password'])){
     foreach($users as $user){
         if($user->username==$username && $user->password==$password){
             $_SESSION['username']=$username;
+            echo 'logged';
             break;
         }
     }
